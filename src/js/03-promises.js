@@ -30,6 +30,6 @@ function onSubmitClick(e) {
       .catch(({ position, delay }) => {
         console.log(`❌ Rejected promise ${position} in ${delay}ms`);
       })
-    delayInput += stepInput;
+    delayInput += stepInput;   
   }
 }
