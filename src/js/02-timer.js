@@ -1,3 +1,4 @@
+import Notiflix from 'notiflix';
 import flatpickr from "flatpickr";
 import "flatpickr/dist/flatpickr.min.css";
 const startBtn = document.querySelector("button[data-start]");
@@ -42,7 +43,8 @@ flatpickr(inputText, options);
 
 function alertMessage(difference) {
     if (difference < 0) {
-        window.alert("Please choose a date in the future");
+        // window.alert("Please choose a date in the future");
+        Notiflix.Notify.warning('Please choose a date in the future');
         startBtn.setAttribute("disabled", 'true');
     } else if (difference === 0) {
         clearInterval(idInterval);
