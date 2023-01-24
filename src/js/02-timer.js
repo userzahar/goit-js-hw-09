@@ -16,7 +16,7 @@ const options = {
     differenceDate: 0,
     onClose(selectedDates) {
         const date = new Date;
-        differenceDate = selectedDates[0].getTime() - date.getTime();
+        let differenceDate = selectedDates[0].getTime() - date.getTime();
         console.log(selectedDates[0]);
         alertMessage(differenceDate);
         console.log("🚀 ", convertMs(differenceDate))
