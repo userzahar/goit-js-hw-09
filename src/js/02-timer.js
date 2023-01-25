@@ -17,18 +17,14 @@ const options = {
     onClose(selectedDates) {
         const date = new Date;
         let differenceDate = selectedDates[0].getTime() - date.getTime();
-        console.log(selectedDates[0]);
         alertMessage(differenceDate);
-        console.log("🚀 ", convertMs(differenceDate))
         startBtn.addEventListener('click', onClickConnect);
         function onClickConnect(e) {
             convertMs(differenceDate);
             startBtn.setAttribute("disabled", 'true');
             idInterval = setInterval(() => {
                 differenceDate -= 1000;
-                console.log("💥", differenceDate);
                 if (differenceDate <= 999) {
-                    console.log(idInterval)
                     clearInterval(idInterval);
                 }
                 let dateDifferenceObject = convertMs(differenceDate);
@@ -39,7 +35,6 @@ const options = {
                 secondsSpan.textContent = addLeadingZero(seconds);
                 
             }, 1000)
-            console.log(idInterval)
         }
     },
 };
@@ -53,7 +48,6 @@ function alertMessage(difference) {
         Notiflix.Notify.warning('Please choose a date in the future');
         startBtn.setAttribute("disabled", 'true');
     } else if (difference === 0) {
-        console.log(idInterval)
         clearInterval(idInterval);
     }
     else {
