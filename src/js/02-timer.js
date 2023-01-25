@@ -26,14 +26,20 @@ const options = {
             startBtn.setAttribute("disabled", 'true');
             idInterval = setInterval(() => {
                 differenceDate -= 1000;
+                console.log("💥", differenceDate);
+                if (differenceDate <= 999) {
+                    console.log(idInterval)
+                    clearInterval(idInterval);
+                }
                 let dateDifferenceObject = convertMs(differenceDate);
                 let { days, hours, minutes, seconds } = dateDifferenceObject;
                 daysSpan.textContent = addLeadingZero(days);
                 hoursSpan.textContent = addLeadingZero(hours);
                 minutesSpan.textContent = addLeadingZero(minutes);
                 secondsSpan.textContent = addLeadingZero(seconds);
-                console.log("💥", convertMs(differenceDate));
+                
             }, 1000)
+            console.log(idInterval)
         }
     },
 };
@@ -47,6 +53,7 @@ function alertMessage(difference) {
         Notiflix.Notify.warning('Please choose a date in the future');
         startBtn.setAttribute("disabled", 'true');
     } else if (difference === 0) {
+        console.log(idInterval)
         clearInterval(idInterval);
     }
     else {
